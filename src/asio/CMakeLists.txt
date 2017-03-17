@@ -11,3 +11,5 @@ target_link_libraries(DaytimeServer1 ${Boost_LIBRARIES})
 add_executable(DaytimeServer2 daytime_server2.cpp)
 
 target_link_libraries(DaytimeServer2 ${Boost_LIBRARIES})
+
+add_subdirectory(chat)
