@@ -54,11 +54,11 @@ template<class T>
 void inc(T& t) {
     using plus1_t = detail::PlusFunctor;
 
-    using plus2_t = boost::conditional<typename boost::has_plus_assign<T>::value, detail::PlusAssignFunctor, plus1_t>::type;
+    using plus2_t = typename boost::conditional<boost::has_plus_assign<T>::value, detail::PlusAssignFunctor, plus1_t>::type;
 
-    using plus3_t = boost::conditional<typename boost::has_post_increment<T>::value, detail::PostIncFunctor, plus2_t>::type;
+    using plus3_t = typename boost::conditional<boost::has_post_increment<T>::value, detail::PostIncFunctor, plus2_t>::type;
 
-    using plus4_t = boost::conditional<typename boost::has_pre_increment<T>::value, detail::PreIncFunctor, plus3_t>::type;
+    using plus4_t = typename boost::conditional<boost::has_pre_increment<T>::value, detail::PreIncFunctor, plus3_t>::type;
 
     plus4_t()(t);
 }
